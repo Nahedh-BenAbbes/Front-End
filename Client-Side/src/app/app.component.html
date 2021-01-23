@@ -1,0 +1,996 @@
+<!--<app-client-login></app-client-login>-->
+<!--<app-client-register></app-client-register>-->
+<!--app-client-dashboard></app-client-dashboard>-->
+<!--<app-client-profil></app-client-profil>-->
+<router-outlet></router-outlet>
+ <!-- Navbar -->
+  <!-- Navbar -->
+
+  <div *ngIf="show">
+  <div  class="container-fluid" style="height:100vh">
+    <mdb-navbar style="font-size: larger;" SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [containerInside]="false">
+      <mdb-navbar-brand> 
+         
+        <a class="logo navbar-brand" href="#home">
+          <strong [routerLink]="['/home']" style="font-family: sans-serif;font-weight: bold;margin-right: 50px;"><img src="../../../assets/dar.png" style="width:40px; height: 40px;" > dardarek</strong>
+        </a>
+      </mdb-navbar-brand>
+      <links>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link page-scroll" href="#nous">Qui Sommes Nous
+            </a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link page-scroll " href="#blog">Blog</a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link page-scroll" href="#contact">Contact</a>
+          </li>
+        </ul>
+              <!-- Right -->
+              <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                  <a [routerLink]="['/login']"  (click)="toogleShow()"  style="font-family:cursive;letter-spacing: 2px;" class="nav-link"><i style="color: white;margin-top:12px;font-size: 13px;" class="fas fa-sign-in-alt"></i>S'identifier</a>
+              </li>
+              </ul>
+              <ul class="navbar-nav nav-flex-icons">
+                  <li class="nav-item">
+                    <a [routerLink]="['/register']"  (click)="registerShow()" style="font-family:cursive;letter-spacing: 2px;" class="nav-link"> <i style="color: white;font-size: 10px;margin-top:12px;" class="fas fa-plus"></i>Registre</a>
+                </li>
+              </ul>
+      
+      </links>
+    </mdb-navbar>
+
+
+<section id="home" class="section section-top section-full">
+
+    <!-- Cover -->
+    <div class="bg-cover" style="background-image: url(https://i1.wp.com/douirablog.com/wp-content/uploads/2020/02/Douira-article-maisons-dh%C3%B4tes.jpg?resize=1080%2C675&ssl=1);
+                                 position: absolute;
+                                 top: 0;
+                                 left: 0;
+                                 right: 0;
+                                 bottom: 0;
+                                 background-repeat: no-repeat;
+                                 background-position: 50%;
+                                 background-size: cover;"></div>
+
+    <!-- Overlay -->
+    <div class="bg-overlay"></div>
+
+    <!-- Triangles -->
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8 col-lg-7">
+
+
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+
+</section>
+
+<div class="container">
+    <div class="row">
+        <div  class="col-sm-5">
+            <div  class="card my-5 p-2 border-0">
+                <div class="card-body">
+                    <h1 class="h5 mt-7 mb-3">Réserver des maisons d'hôtes</h1>
+                    <form>
+                        <div class="form-group">
+                            <div class="row px-3">
+                                <label style="font-size: 14px;letter-spacing: 1px;" class="mb-0" for="locationInput mb-0 mt-5">Choisir votre destination</label>
+                                <input style="font-size: small;" type="email" class="form-control h-100 w-100 br0" id="locationInput" aria-describedby="locationInputHelp" placeholder="Destination">
+                            </div>
+                        </div>
+                        <div class="row px-3">
+                            <div style="font-size: 15px;letter-spacing: 1px;" class="col-sm-6 px-0">
+                                Arrivée:   
+                                <div  class="form-group">
+                                  <div style="width: 80%;" class="input-group">
+                                    <input style=" font-size: 12px;" #dpFromDate
+                                           class="form-control" placeholder="yyyy-mm-dd"
+                                           name="dpFromDate"
+                                           [value]="formatter.format(fromDate)"
+                                           (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                                    <div class="input-group-append">
+                              <button style="background:rgba(0, 255, 255, 0.144);border-radius: 5px;border: none;color: rgb(19, 19, 133);outline: none;" (click)="datepicker.toggle()" type="button"><i style="font-size:15px;" class="fas fa-calendar-alt"></i> </button>         </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div style="font-size: 15px;letter-spacing: 1px;" class="col-sm-6 px-0">
+                                 Partir:  
+                                 <div class="form-group ml-2">
+                                    <div style="width: 80%;" class="input-group">
+                                      <input  style=" font-size: 12px;" #dpToDate
+                                             class="form-control" placeholder="yyyy-mm-dd"
+                                             name="dpToDate"
+                                             [value]="formatter.format(toDate)"
+                                             (input)="toDate = validateInput(toDate, dpToDate.value)">
+                                      <div class="input-group-append">
+                                        <button style="background:rgba(0, 255, 255, 0.144);border-radius: 5px;border: none;color: rgb(19, 19, 133);outline: none;" (click)="datepicker.toggle()" type="button"><i style="font-size:15px;" class="fas fa-calendar-alt"></i> </button>         </div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="form-group hidden">
+                            <div class="input-group">
+                              <input id="basma" name="datepicker"
+                                     class="form-control"
+                                     ngbDatepicker
+                                     #datepicker="ngbDatepicker"
+                                     [autoClose]="'outside'"
+                                     (dateSelect)="onDateSelection($event)"
+                                     [displayMonths]="2"
+                                     [dayTemplate]="t"
+                                     outsideDays="hidden"
+                                     [startDate]="fromDate!"
+                                     tabindex="-1">
+                              <ng-template #t let-date let-focused="focused">
+                                <span class="custom-day"
+                                      [class.focused]="focused"
+                                      [class.range]="isRange(date)"
+                                      [class.faded]="isHovered(date) || isInside(date)"
+                                      (mouseenter)="hoveredDate = date"
+                                      (mouseleave)="hoveredDate = null">
+                                  {{ date.day }}
+                                </span>
+                              </ng-template>
+                            </div>
+                          </div>
+
+                        <div class="row px-3">
+                            <div class="col-sm-6 px-0 br0">
+                                <div class="form-group">
+                                    <label style="font-size: 15px;letter-spacing: 1px;" class="mb-0 mt-0.2" for="exampleFormControlSelect1">Adultes</label>
+                                    <select style="border-style: dashed;font-size: 15px;letter-spacing: 1px;" class="form-control" id="exampleFormControlSelect1">
+                                        <option>1 adult</option>
+                                        <option>2 adultes</option>
+                                        <option>3 adultes</option>
+                                        <option>4 adultes</option>
+                                        <option>5 adultes</option>
+                                        <option>6 adultes</option>
+                                        <option>7 adultes</option>
+                                        <option>8 adultes</option>
+                                        <option>9 adultes</option>
+                                        <option>10 adultes</option>
+                                        <option>11 adultes</option>
+                                        <option>12 adultes</option>
+                                        <option>13 adultes</option>
+                                        <option>14 adultes</option>
+                                        <option>15 adultes</option>
+                                        <option>16 adultes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 px-0 br0">
+                                <div  class="form-group">
+                                    <label style="font-size: 15px;letter-spacing: 1px;" class="mb-0 mt-0.2" for="exampleFormControlSelect2">Enfants</label>
+                                    <select style="border-style: dashed;font-size: 15px;letter-spacing: 1px;" class="form-control" id="exampleFormControlSelect2">
+                                        <option>0 enfant</option>
+                                        <option>1 enfant</option>
+                                        <option>2 enfants</option>
+                                        <option>3 enfants</option>
+                                        <option>4 enfants</option>
+                                        <option>5 enfants</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="wrap">
+                        <button class="btn1">Rechercher</button>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div><br><br><br><br><br><br>
+
+<!--********************************************************************************************************************************************************************************************-->
+
+<!--start of the meilleurs offres section--->
+<div class="container">
+    <h3 class="text-center">Nos meilleurs offres</h3>
+    <div class="row mt-40">
+        <div class="col-md-4 col-sm-6">
+            <div class="box1">
+                <img src="https://static.flyaway.pro/photos/6487/Maison-Hotes-Dar-El-Bidha-Djerba-Tunisie.jpg" alt="">
+                <h3 class="title">Dar El Bidha</h3>
+                <ul class="icon">
+                    <li style="color: white;cursor: pointer;"><i class="fas fa-shopping-cart"></i></li>
+           
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="box1">
+                <img src="https://static.flyaway.pro/photos/17661/Maison-Hotes-Dar-Nesma-Zarzis-Tunisie.jpg" alt="" class="img-thumbn">
+                <h3 class="title">Dar Nesma Zarzis</h3>
+                <ul class="icon">
+                    <li style="color: white;cursor: pointer;"><i class="fas fa-shopping-cart"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="box1">
+                <img src="https://static.flyaway.pro/photos/17639/Piscine1-Maison-Hotes-Dar-Karmi-Djerba-Tunisie.jpg" alt="">
+                <h3 class="title">Dar Karmi</h3>
+                <ul class="icon">
+                    <li style="color: white;cursor: pointer;"><i class="fas fa-shopping-cart"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--this is the description under the meilleurs offres images-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+              <div class="thumbnail">
+                <img src="http://tech.firstpost.com/wp-content/uploads/2014/09/Apple_iPhone6_Reuters.jpg" alt="" class="img-responsive">
+                <div class="caption">
+                  <h4 style="font-size: 13px;" class="pull-right">250TND/nuit/per</h4>
+                <h4 style="font-size: 19px;"><a href="#">Dar El Bidha</a></h4>
+                  <p style="font-size: small;">Un lieu de quiétude unique alliant le confort et la tradition, qui vous fera oublier le monde extérieur.</p>
+                </div>
+                <div class="ratings">
+                    <ul style="font-size: larger;" class="candidates-profile-icons list-inline mb-3">
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a><span style="font-size: small;" class="text-secondary">Notez!</span></li>
+                    
+                    </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="thumbnail">
+                <img src="http://tech.firstpost.com/wp-content/uploads/2014/09/Apple_iPhone6_Reuters.jpg" alt="" class="img-responsive">
+                <div class="caption">
+                  <h4 style="font-size: 13px;" class="pull-right">370TND/nuit/per</h4>
+                 <h4 style="font-size: 19px;"><a href="#">Dar Nesma Zarzis</a></h4>
+                  <p style="font-size: small;">Un lieu de charme pour oublier la vie trépidante et enfin débrancher et lâcher prise.</p>
+                </div>
+                <div class="ratings">
+                    <ul style="font-size: larger;" class="candidates-profile-icons list-inline mb-3">
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a><span style="font-size: small;" class="text-secondary">Notez!</span></li>
+                    
+                    </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="thumbnail">
+                <img src="http://tech.firstpost.com/wp-content/uploads/2014/09/Apple_iPhone6_Reuters.jpg" alt="" class="img-responsive">
+                <div class="caption">
+                  <h4 style="font-size: 13px;" class="pull-right">280TND/nuit/per</h4>
+                  <h4 style="font-size: 19px;"><a href= "#">Dar Karmi</a></h4>
+                  <p style="font-size: small;">À seulement quelques minutes des plages et de activités sportives, équestres, et centres de remise en forme.</p>
+                </div>
+                <div class="ratings">
+                    <ul style="font-size: larger;" class="candidates-profile-icons list-inline mb-3">
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a></li>
+                        <li class="list-inline-item"><a class="font-weight-bold" href="javascript:void(0);"class="text-primary"><i class="mdi mdi-star"></i></a><span style="font-size: small;" class="text-secondary">Notez!</span></li>
+                    
+                    </ul>
+                </div>
+              </div>
+            </div>
+    </div>
+</div>
+<br><br>
+<div class="row justify-content-center">
+    <button style="border: none;outline: none;" class="text-info btn-link">
+        <span class="h6">Voir plus(120+) &gt;</span>
+    </button>
+</div><br><br><br><br><br><br>
+<!--end of the meilleurs offres section-->
+
+
+<!--********************************************************************************************************************************************************************************************-->
+
+
+<!--Nos maisons d'hotes section-->
+  
+<div id="gridview">
+    <div class=" heading">Nos Maisons d'hôtes</div>
+    <div style="margin-right: 25px;padding-right: 25px;" class="store-item">
+        <div class="store-item-image">
+            <a href="#">
+                <img style="width: 400px;height: 200px;" src="https://i2.wp.com/lapresse.tn/wp-content/uploads/2019/04/maison-dhotes.jpg?fit=850%2C491&ssl=1" alt="" class="img-responsive">
+            </a>
+            <a class="search-btn-action btn btn-sm btn-block btn-info"><i class="fa fa-shopping-cart"></i>  Réserver!</a>
+
+        </div>
+        <div style="margin-right: 25px;padding-right: 25px;"   class="store-item-info clearfix">
+            <span class="store-item-price themed-color-dark pull-right">230TND/nuit/per</span>
+            <a href="#"><strong>Dar Basma</strong></a><br>
+        </div>
+    </div>
+
+    <div style="margin-right: 25px;padding-right: 25px;"  class="store-item">
+        <div class="store-item-image">
+            <a href="#">
+                <img style="width: 400px;height: 200px;"  src="https://tunisie.co/uploads/images/content/dar-yasmine-160617-v.jpg" alt="" class="img-responsive">
+            </a>
+            <a class="search-btn-action btn btn-sm btn-block btn-grey disabled">Indisponible!</a>
+
+        </div>
+        <div class="store-item-info clearfix">
+            <span class="store-item-price themed-color-dark pull-right">230TND/nuit/per</span>
+            <a href="#"><strong>Dar Haroun</strong></a><br>
+        </div>
+    </div>
+    <div style="margin-right: 25px;padding-right: 25px;"  class="store-item">
+        <div class="store-item-image">
+            <a href="#">
+                <img style="width: 400px;height: 200px;" src="https://femmesdetunisie.com/wp-content/uploads/2016/07/dar-el-lamma-1.jpg" alt="" class="img-responsive">
+            </a>
+            <a class="search-btn-action btn btn-sm btn-block btn-info"><i class="fa fa-shopping-cart"></i>  Réserver!</a>
+
+        </div>
+        <div class="store-item-info clearfix">
+            <span class="store-item-price themed-color-dark pull-right">230TND/nuit/per</span>
+            <a href="#"><strong>Dar Nahedh</strong></a><br>
+        </div>
+    </div>
+    <div style="margin-right: 25px;padding-right: 25px;"  class="store-item">
+        <div class="store-item-image">
+            <a href="#">
+                <img style="width: 400px;height: 200px;" src="https://femmesdetunisie.com/wp-content/uploads/2016/07/dar-el-lamma-1.jpg" alt="" class="img-responsive">
+            </a>
+            <a class="search-btn-action btn btn-sm btn-block btn-info"><i class="fa fa-shopping-cart"></i>  Réserver!</a>
+
+        </div>
+        <div class="store-item-info clearfix">
+            <span class="store-item-price themed-color-dark pull-right">109</span>
+            <a href="#"><strong>Product one</strong></a><br>
+         
+        </div>
+    </div>
+    <div style="margin-right: 25px;padding-right: 25px;"  class="store-item">
+        <div class="store-item-image">
+            <a href="#">
+                <img style="width: 400px;height: 200px;" src="https://femmesdetunisie.com/wp-content/uploads/2016/07/dar-el-lamma-1.jpg" alt="" class="img-responsive">
+            </a>
+            <a class="search-btn-action btn btn-sm btn-block btn-info"><i class="fa fa-shopping-cart"></i>  Réserver!</a>
+
+        </div>
+        <div class="store-item-info clearfix">
+            <span class="store-item-price themed-color-dark pull-right">109</span>
+            <a href="#"><strong>Product one</strong></a><br>
+           
+        </div>
+    </div>
+    <div style="margin-right: 25px;padding-right: 25px;"  class="store-item">
+        <div class="store-item-image">
+            <a href="#">
+                <img style="width: 400px;height: 200px;" src="https://femmesdetunisie.com/wp-content/uploads/2016/07/dar-el-lamma-1.jpg" alt="" class="img-responsive">
+            </a>
+            <a class="search-btn-action btn btn-sm btn-block btn-info"><i class="fa fa-shopping-cart"></i>  Réserver!</a>
+
+        </div>
+        <div class="store-item-info clearfix">
+            <span class="store-item-price themed-color-dark pull-right">109</span>
+            <a href="#"><strong>Product one</strong></a><br>
+        </div>
+    </div>
+
+
+    <ng-container *ngIf="vis">
+
+        <div style="margin-right: 25px;padding-right: 25px;" class="store-item">
+            <div class="store-item-image">
+                <a href="#">
+                    <img style="width: 400px;height: 200px;" src="https://i2.wp.com/lapresse.tn/wp-content/uploads/2019/04/maison-dhotes.jpg?fit=850%2C491&ssl=1" alt="" class="img-responsive">
+                </a>
+                <a class="search-btn-action btn btn-sm btn-block btn-info"><i class="fa fa-shopping-cart"></i>  Réserver!</a>
+    
+            </div>
+            <div style="margin-right: 25px;padding-right: 25px;"   class="store-item-info clearfix">
+                <span class="store-item-price themed-color-dark pull-right">230TND/nuit/per</span>
+                <a href="#"><strong>Dar Basma</strong></a><br>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="vis">
+
+        <div style="margin-right: 25px;padding-right: 25px;" class="store-item">
+            <div class="store-item-image">
+                <a href="#">
+                    <img style="width: 400px;height: 200px;" src="https://i2.wp.com/lapresse.tn/wp-content/uploads/2019/04/maison-dhotes.jpg?fit=850%2C491&ssl=1" alt="" class="img-responsive">
+                </a>
+                <a class="search-btn-action btn btn-sm btn-block btn-info"><i class="fa fa-shopping-cart"></i>  Réserver!</a>
+    
+            </div>
+            <div style="margin-right: 25px;padding-right: 25px;"   class="store-item-info clearfix">
+                <span class="store-item-price themed-color-dark pull-right">230TND/nuit/per</span>
+                <a href="#"><strong>Dar Basma</strong></a><br>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="vis">
+
+        <div style="margin-right: 25px;padding-right: 25px;" class="store-item">
+            <div class="store-item-image">
+                <a href="#">
+                    <img style="width: 400px;height: 200px;" src="https://i2.wp.com/lapresse.tn/wp-content/uploads/2019/04/maison-dhotes.jpg?fit=850%2C491&ssl=1" alt="" class="img-responsive">
+                </a>
+                <a class="search-btn-action btn btn-sm btn-block btn-info"><i class="fa fa-shopping-cart"></i>  Réserver!</a>
+    
+            </div>
+            <div style="margin-right: 25px;padding-right: 25px;"   class="store-item-info clearfix">
+                <span class="store-item-price themed-color-dark pull-right">230TND/nuit/per</span>
+                <a href="#"><strong>Dar Basma</strong></a><br>
+            </div>
+        </div>
+    </ng-container><br><br><br><br>
+     <button style="border: none;background-color: transparent;color: black;font-weight: bolder;font-size: large;" (click)="charger()">{{ChargerPlus?"Voir Plus":"Voir Moins"}}</button> 
+                 <!--juste pour styler voir plus button sonar-->
+                 <div class="sonar-wrapper" (click)="charger()">
+                    <div class="sonar-emitter">
+                     <div class="sonar-wave"></div>
+                </div>
+            </div>
+
+<!--end of (nos maisons)-->
+
+
+<!--**************************************************************************************************************************************-->
+
+<!--Start of Suite Section-->
+
+<h1 style="margin-top: 100px;">Nos Suites</h1>
+<div id="container">	
+
+    <!-- Start	Product details -->
+        <div class="product-details">
+            
+            <!-- 	Product Name -->
+        <h1>Beit El Houta</h1>
+
+    <!-- The most important information about the product -->
+            <p class="information">" Maison d’hôtes située sur la plage de Kelibia (Cap Bon, Tunisie).
+
+                Elle offre à ses hôtes une excursion hors du temps, l’évasion au coeur d’une végétation luxuriante, sur une des plus belles plages du monde."</p>
+
+    <!-- Start Button buying -->
+        <button  class="btn">
+    <!-- 		the Price -->
+         <span  class="price">200TND</span>
+    <!-- 		shopping cart icon-->
+       <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+    <!-- 		Buy Now / Réserver-->
+       <span class="buy">Réserver</span>
+     </button>
+        <!-- End Button buying -->
+    </div>
+        
+    <!-- 	End	Product details   -->
+
+    <!-- 	Start product image & Information -->
+                                    
+     <div class="product-image">
+                                    
+           <img src="http://dardarek2.etikkslab.com/wp-content/uploads/2019/11/img-9450-2-1.jpg" alt="Omar Dsoky">
+                                    
+             <!-- 	product Information-->
+                 <div class="info">
+                     <h2>Description</h2>
+                       <ul>
+                         <li><strong>Capacité: </strong>2 Invités</li>
+                         <li><strong>Chambres à coucher: </strong> 1 lits</li>
+                         <li><strong>Zone: </strong> Kelibia</li>
+                         <li><strong>Weekend: </strong>250TND</li>
+                         </ul>
+                        </div>
+                     </div>
+              <!--  End product image  -->
+          </div>
+    <div id="container">	
+
+         <!-- Start	Product details -->
+        <div class="product-details">
+                                            
+             <!-- 	Product Name -->
+            <h1>Beit El Houta</h1>
+
+            <!-- The most important information about the product -->
+             <p class="information">" Maison d’hôtes située sur la plage de Kelibia (Cap Bon, Tunisie).
+                                
+             Elle offre à ses hôtes une excursion hors du temps, l’évasion au coeur d’une végétation luxuriante, sur une des plus belles plages du monde . "</p>
+         
+              <!-- Start Button buying -->
+              <button  class="btn">
+            <!-- 		the Price -->
+                <span  class="price">200TND</span>
+                 <!-- shopping cart icon-->
+                 <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                <!-- Buy Now / Réserver-->
+                <span class="buy">Réserver</span>
+                   </button>
+                <!-- End Button buying -->
+        </div>
+                                        
+           <!-- End	Product details   -->
+          
+           <!-- 	Start product image & Information -->
+                                                                    
+           <div class="product-image">
+              <img src="http://dardarek2.etikkslab.com/wp-content/uploads/2019/11/img-9450-2-1.jpg" alt="Omar Dsoky">
+               <!-- 	product Information-->
+                 <div class="info">
+                     <h2>Description</h2>
+                    <ul>
+                        <li><strong>Capacité: </strong>2 Invités</li>
+                        <li><strong>Chambres à coucher: </strong> 1 lits</li>
+                        <li><strong>Zone: </strong> Kelibia</li>
+                        <li><strong>Weekend: </strong>250TND</li>                                      
+                     </ul>
+                   </div>
+              </div>
+                 <!--  End product image  -->
+                 </div>
+                 <!--end of the Suites section-->
+
+
+<!--                         button show hide voir plus                      -->
+
+
+                <!--button logic to show and hide content-->
+                 
+                 <ng-container *ngIf="visible">
+                     <div>
+                        <div id="container">	
+
+                            <!-- Start	Product details -->
+                           <div class="product-details">
+                                                               
+                                <!-- 	Product Name -->
+                               <h1>Hamamet</h1>
+                   
+                               <!-- The most important information about the product -->
+                                <p class="information">" Maison d’hôtes située sur la plage de Kelibia (Cap Bon, Tunisie).
+                                                   
+                                Elle offre à ses hôtes une excursion hors du temps, l’évasion au coeur d’une végétation luxuriante, sur une des plus belles plages du monde . "</p>
+                            
+                                 <!-- Start Button buying -->
+
+                                 <button  class="btn">
+                               <!-- 		the Price -->
+                                   <span  class="price">200TND</span>
+                                    <!-- shopping cart icon-->
+                                    <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                                   <!-- Buy Now / Réserver-->
+                                   <span class="buy">Réserver</span>
+                                      </button>
+                                   <!-- End Button buying -->
+                           </div>
+                                                           
+                              <!-- End	Product details   -->
+                             
+                              <!-- 	Start product image & Information -->
+                                                                                       
+                              <div class="product-image">
+                                 <img src="https://www.vacationkey.com/photos/7/1/7115-4.jpg" alt="Omar Dsoky">
+                                  <!-- 	product Information-->
+                                    <div class="info">
+                                        <h2>Description</h2>
+                                       <ul>
+                                           <li><strong>Capacité: </strong>2 Invités</li>
+                                           <li><strong>Chambres à coucher: </strong> 1 lits</li>
+                                           <li><strong>Zone: </strong> Kelibia</li>
+                                           <li><strong>Weekend: </strong>250TND</li>                                      
+                                        </ul>
+                                      </div>
+                                 </div>
+                                    <!--  End product image  -->
+                                    </div>
+                                    <!--end of the Suites section-->
+                   
+                     </div>
+                 </ng-container>
+                 <ng-container *ngIf="visible">
+                    <div>
+                       <div id="container">	
+
+                           <!-- Start	Product details -->
+                          <div class="product-details">
+                                                              
+                               <!-- 	Product Name -->
+                              <h1>Hamamet</h1>
+                  
+                              <!-- The most important information about the product -->
+                               <p class="information">" Maison d’hôtes située sur la plage de Kelibia (Cap Bon, Tunisie).
+                                                  
+                               Elle offre à ses hôtes une excursion hors du temps, l’évasion au coeur d’une végétation luxuriante, sur une des plus belles plages du monde . "</p>
+                           
+                                <!-- Start Button buying -->
+                                <button  class="btn">
+                              <!-- 		the Price -->
+                                  <span  class="price">200TND</span>
+                                   <!-- shopping cart icon-->
+                                   <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                                  <!-- Buy Now / Réserver-->
+                                  <span class="buy">Réserver</span>
+                                     </button>
+                                  <!-- End Button buying -->
+                          </div>
+                                                          
+                             <!-- End	Product details   -->
+                            
+                             <!-- 	Start product image & Information -->
+                                                                                      
+                             <div class="product-image">
+                                <img src="https://www.vacationkey.com/photos/7/1/7115-4.jpg" alt="Omar Dsoky">
+                                 <!-- 	product Information-->
+                                   <div class="info">
+                                       <h2>Description</h2>
+                                      <ul>
+                                          <li><strong>Capacité: </strong>2 Invités</li>
+                                          <li><strong>Chambres à coucher: </strong> 1 lits</li>
+                                          <li><strong>Zone: </strong> Kelibia</li>
+                                          <li><strong>Weekend: </strong>250TND</li>                                      
+                                       </ul>
+                                     </div>
+                                </div>
+                                   <!--  End product image  -->
+                                   </div>
+                                   <!--end of the Suites section-->
+                  
+                    </div>
+                </ng-container>
+                 <button style="border: none;background-color: transparent;color: black;font-weight: bolder;font-size: large;" (click)="onclick()">{{VoirPlus?"Voir Plus":"Voir Moins"}}</button> 
+                 <!--juste pour styler voir plus button sonar-->
+                 <div class="sonar-wrapper" (click)="onclick()">
+                    <div class="sonar-emitter">
+                     <div class="sonar-wave"></div>
+                </div>
+            </div>
+<!--                end         button show hide voir plus                      -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<!--*****************************************************************************************************************************************************************************************-->
+
+<!--Destination section-->
+<h1>Destinations tendances</h1>
+<p>Explorez notre sélection des meilleurs endroits du monde</p>
+<div class="accordian">
+    <ul>
+		<li>
+			<div class="image_title">
+				<a href="#">Hamamet</a>
+			</div> 
+			<a href="#">
+                <img style="width: 670px;" src="https://lp-cms-production.imgix.net/2019-06/322ad263ba579aaccb5666424791a839-hammamet.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">Klébia</a>
+			</div>
+			<a href="#">
+				<img style="width: 640px;" src="https://www.les-voyageuses.net/wp-content/uploads/2018/09/les-voyageuses-tunisie-kelibia-1.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">Monastir</a>
+			</div>
+			<a href="#">
+				<img style="width: 800px;" src="https://villa-romana-monastir.com/wp-content/uploads/2018/05/marina-a-monastir-tunisie.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">Sidi Bou Said</a>
+			</div>
+			<a href="#">
+				<img style="width: 670px;" src="https://vocalafrica.com/wp-content/uploads/2020/02/panoramica-sidi-bou-said.jpg"/>
+			</a>
+		</li>
+		<li>
+			<div class="image_title">
+				<a href="#">Zaghoune</a>
+			</div>
+			<a href="#">
+				<img style="width: 640px;height: 450px;" src="https://i.pinimg.com/originals/02/7b/8a/027b8a02ebddd03c5f1536237db6229f.jpg"/>
+			</a>
+		</li>
+	</ul>
+</div>
+</div>
+
+<!--end of destination section-->
+
+
+
+
+
+
+
+
+
+<!--****************************************************************************************************************************************************-->
+
+<!--Start of blog section-->
+
+<br><br><br><br><br><br><br><br>
+<div id="blog" class="container mt-100 mt-60">
+    <div class="row">
+        <div class="col-12 text-left">
+            <div class="section-title mb-4 pb-2">
+                <h4 class="title mb-1">De notre blog</h4>
+                <p style="color: gray;" class="para-desc mx-auto mb-0" class="text-left" >Garder toujours à jour sur les derniers sujets</p>
+            </div>
+        </div><!--end col-->
+    </div><!--end row-->
+
+    <div class="row mt-0">
+        <div class="col-lg-4 col-md-6 mt-0 pt-2 mb-5">
+            <div class="blog-post rounded border">
+                <div class="blog-img d-block overflow-hidden position-relative">
+                    <img src="https://machronique.com/wp-content/uploads/2020/08/wildyness.jpg" class="img-fluid rounded-top" alt="">
+                    <div class="overlay rounded-top bg-dark"></div>
+                    <div class="post-meta">
+                        <a href="javascript:void(0)" class="text-light d-block text-right like"><i class="mdi mdi-heart"></i> 33</a>
+                        <a href="javascript:void(0)" class="text-light read-more">Lire la suite<i class="mdi mdi-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="content p-3">
+                    <small class="text-muted p float-right">17 Jan, 21</small>
+                    <small><a href="javascript:void(0)" class="text-primary">Rentals</a></small>
+                    <h4 class="mt-2"><a href="javascript:void(0)" class="text-dark title">What People Are Saying About Rentals</a></h4>
+                    <p style="font-size: small;" class="text-muted mt-2">There is now an abundance of readable dummy texts. These are usually used when a text is required purely to fill a space.</p>
+                    <div class="pt-3 mt-3 border-top d-flex">
+                        <img src="../../../assets/admin.jpg" class="img-fluid avatar avatar-ex-sm rounded-pill mr-3 shadow" alt="">
+                        <div class="author mt-2">
+                            <h6 class="mb-0"><a href="javascript:void(0)" class="text-dark name">Admin</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end blog post-->
+        </div><!--end col-->
+        
+        <div class="col-lg-4 col-md-6 mt-0 pt-2">
+            <div class="blog-post rounded border">
+                <div class="blog-img d-block overflow-hidden position-relative">
+                    <img style="height: 200px;width: 700px;" src="https://www.manutan-collectivites.fr/media/wysiwyg/images/desinfection-2.png" class="img-fluid rounded-top" alt="">
+                    <div class="overlay rounded-top bg-dark"></div>
+                    <div class="post-meta">
+                        <a href="javascript:void(0)" class="text-light d-block text-right like"><i class="mdi mdi-heart"></i> 33</a>
+                        <a href="javascript:void(0)" class="text-light read-more">Lire la suite<i class="mdi mdi-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="content p-3">
+                    <small class="text-muted p float-right">19 Jan, 21</small>
+                    <small><a href="javascript:void(0)" class="text-primary">Safety <span class="badge badge-success">New</span></a></small>
+                    <h4 class="mt-2"><a href="javascript:void(0)" class="text-dark title">Don't worry about Corona</a></h4>
+                    <p style="font-size: small;" class="text-muted mt-2">There is now an abundance of readable dummy texts. These are usually used when a text is required purely to fill a space.</p>
+                    <div class="pt-3 mt-3 border-top d-flex">
+                        <img src="../../../assets/admin.jpg" class="img-fluid avatar avatar-ex-sm rounded-pill mr-3 shadow" alt="">
+                        <div class="author mt-2">
+                            <h6 class="mb-0"><a href="javascript:void(0)" class="text-dark name">Admin</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end blog post-->
+        </div><!--end col-->
+        
+        <div class="col-lg-4 col-md-6 mt-0 pt-2">
+            <div class="blog-post rounded border">
+                <div class="blog-img d-block overflow-hidden position-relative">
+                    <img style="height: 200px;width: 700px;" src="https://maxi-booking.com/wp-content/uploads/2019/07/post-image-575w.jpg" class="img-fluid rounded-top" alt="">
+                    <div class="overlay rounded-top bg-dark"></div>
+                    <div class="post-meta">
+                        <a href="javascript:void(0)" class="text-light d-block text-right like"><i class="mdi mdi-heart"></i> 33</a>
+                        <a href="javascript:void(0)" class="text-light read-more">Lire la suite <i class="mdi mdi-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="content p-3">
+                    <small class="text-muted p float-right">20 Jan, 21</small>
+                    <small><a href="javascript:void(0)" class="text-primary">Reservation</a></small>
+                    <h4  class="mt-2"><a href="javascript:void(0)" class="text-dark title">What Everyone Knew About Reservations</a></h4>
+                    <p style="font-size: small;" class="text-muted mt-2">There is now an abundance of readable dummy texts. These are usually used when a text is required purely to fill a space.</p>
+                    <div class="pt-3 mt-3 border-top d-flex">
+                        <img src="../../../assets/admin.jpg" class="img-fluid avatar avatar-ex-sm rounded-pill mr-3 shadow" alt="">
+                        <div class="author mt-2">
+                            <h6 class="mb-0"><a href="javascript:void(0)" class="text-dark name">Admin</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end blog post-->
+        </div><!--end col-->
+    </div><!--end row-->
+</div>
+
+<!--end of blog section-->
+<br><br>
+<div class="row justify-content-center">
+    <button style="border: none;outline: none;" class="text-info btn-link">
+        <span class="h6">Voir plus de blogs &gt;</span>
+    </button>
+</div><br><br><br><br><br><br>
+
+
+
+<!--***********************************************************************************************************************************************************-->
+
+              <!--Start of Slider Spansors-->
+              <div class="slider">
+                 <div class="slide-track">
+                     <div class="slide">
+                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+                    </div>
+                     <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+                    </div>
+                        <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+                    </div>
+                </div>
+              </div>
+        <!--end of Slider Spansors Section-->
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+
+<!--********************************************************************************************************************************************-->
+<h1 id="nous" class="row justify-content-center" style="font-size: 25px;">Qui Sommes Nous</h1><br><br>
+<!--Start of Qui sommes nous section-->
+<mdb-carousel  class="carousel slide carousel-fade" [animation]="'fade'">
+    <mdb-carousel-item style="height: 300px;">
+      <div class="view w-100">
+        <img class="d-block w-100" src="https://t4.ftcdn.net/jpg/01/14/15/03/360_F_114150398_Yl2ON0Kp2VntkYlsQtLKa047qHLBiXj6.jpg" alt="First slide">
+        <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="mb-5 h5-responsive">dardarek, née en 2019, elle compte désormais 300 d’hôtes ayant accueilli plus de 1 million de voyageurs dans environ 25 villes à travers presque tous les régions de la Tunisie. </h3>
+
+      </div>
+    </mdb-carousel-item>
+    <mdb-carousel-item style="height: 300px;">
+      <div class="view w-100">
+        <img class="d-block w-100" src="https://t4.ftcdn.net/jpg/01/14/15/03/360_F_114150398_Yl2ON0Kp2VntkYlsQtLKa047qHLBiXj6.jpg" alt="Second slide">
+        <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="mb-5 h5-responsive"> Nous pensons que notre responsabilité est d’être au service des hôtes, des voyageurs et des communautés où nous évoluons, mais aussi de nos employés et de nos investisseurs, pour assurer la pérennité de notre entreprise.</h3>
+      </div>
+    </mdb-carousel-item>
+    <mdb-carousel-item style="height: 300px;">
+      <div class="view w-100">
+        <img  class="d-block w-100" src="https://t4.ftcdn.net/jpg/01/14/15/03/360_F_114150398_Yl2ON0Kp2VntkYlsQtLKa047qHLBiXj6.jpg" alt="Third slide">
+        <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="mb-5 h5-responsive">elle compte désormais 100 d’hôtes ayant accueilli plus de 1 million de voyageurs dans environ 25 villes à travers presque tous les régions de la Tunisie. </h3>
+      </div>
+    </mdb-carousel-item>
+  </mdb-carousel>
+       
+  
+
+  <!--*********************************************************************************-->
+
+ 
+
+
+
+
+<!--start of contact section-->
+
+<div id="contact">
+<section id="contact">
+    <div class="container">
+      <div class="well well-sm">
+        <h3><strong></strong></h3>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-7">
+          <iframe src="https://maps.google.com/maps?q=Tunisie%20lac&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="315" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <div style="margin-top: 15px;" class="social-container">
+            <ul class="social-icons">
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-google"></i></a></li>
+            </ul>
+        </div>
+        </div>
+  
+        <div class="col-md-5">
+            <h4><strong>Nous Contacter</strong></h4>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" name="" value="" placeholder="Votre nom">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" name="" value="" placeholder="Votre E-mail">
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" name="" value="" placeholder="Votre téléphone">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="" rows="3" placeholder="Entrer votre message"></textarea>
+            </div>
+            <button  style="border: none;width: 150px;margin-left: 150px;background-color: #18379d;height: 40px;" class="btn btn" type="submit" name="button">
+                <i style="padding-right: 10px;" class="fa fa-paper-plane-o" aria-hidden="true"></i>Envoyer
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+ </div>
+
+ <!----------------------------------------------------------------------------------------------------------------->
+
+ <!--footer-->
+<div style="background: #322f30;" class="container-fluid border-top mt-0">
+<footer  class="container pt-0 my-md-1 pt-md-1">
+    <div class="row justify-content-center">
+     <ul  class="list-unstyled text-small">
+         <li style="font-size: 17px;color: white;">© 2021 | Tous les droits sont réservés.</li>
+         
+     </ul>
+        </div>
+
+        
+</footer>
+</div>
+
+</div>
